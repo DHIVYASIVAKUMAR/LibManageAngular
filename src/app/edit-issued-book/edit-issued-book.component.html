@@ -1,0 +1,42 @@
+<h1>Edit Issued Book</h1>
+
+<form [formGroup]="editIssuedBookForm" (ngSubmit)="onSubmit()"> 
+    <p>
+      <label for="bookName">Book Name</label>
+      <input type="text" id="bookName" name="bookname" formControlName="serviceBookName">
+    </p>
+   
+    <p>
+      <label for="authorName">Author Name </label>
+      <input type="text" id="authorName" name="authorName" formControlName="serviceAuthorName">
+    </p>
+   
+    <p>
+      <label for="branch">Branch </label>
+      <input type="text" id="branch" name="branch" formControlName="serviceSerialNumber">
+    </p>
+
+    <p>
+      <label for="student">Student </label>
+      <input type="text" id="student" name="student" formControlName="serviceBranch">   
+    </p>
+   
+    <p>
+        <label for="email">Email </label>
+        <input type="text" id="email" name="email" formControlName="servicePublications">     
+    </p>
+
+    <p>
+      <label for="fromDate">From Date</label>
+      <input type="Date" id="fromDate" name="fromDate" formControlName="serviceIsAvailable">
+    </p>
+    <p>
+      <label for="toDate">To Date </label>
+      <input type="Date" id="toDate" name="toDate" formControlName="serviceIsAvailable">
+    </p>
+   
+    <p>
+      <button type="submit">Save</button>
+    </p>
+   
+  </form>

@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "ProLib"
+  "defaultProject": "ProLib",
+  "cli": {
+    "analytics": "7a15fa5b-b5ff-437a-ba0d-a4e5e4bdcfa3"
+  }
 }
