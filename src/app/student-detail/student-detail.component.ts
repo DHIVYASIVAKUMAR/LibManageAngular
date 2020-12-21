@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-student-detail',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:ActivatedRoute,private http:HttpClient) { }
+  jsonData:any;
+  ngOnInit(): void {    
+    let id = this.router.snapshot.paramMap.get('id');    
+    this.http.get('https://localhost:44369/api/ServiceStudents/GetServiceStudents/'+id).toPromise().then((data:any) => {this.jsonData = data;console.log(data);});
 
-  ngOnInit(): void {
   }
 
 }

@@ -11,8 +11,11 @@
      
       <table class="table-borderless">
         <tr>
-          <td >
-            <input type="text" id="authorName" name="authorName" formControlName="AuthorName" [(ngModel)]='authorName'>
+          <td > 
+            <select required  id="authorName" name="authorName" formControlName="AuthorName" class="form-control" [(ngModel)]='authorName'>
+              <option value="undefined">Please select Author</option>
+              <option *ngFor="let author of authorList" [ngValue]="author.serviceAuthorName">{{author.serviceAuthorName}}</option>
+            </select>
           </td>
           <td>
             <button type="button" class="btn btn-outline-primary  wrapper" (click)="addAuthor()">
@@ -33,7 +36,10 @@
       <table class="table-borderless">
         <tr>
           <td >
-             <input type="text" id="branch" name="branch" formControlName="Branch" [(ngModel)]='branch'> 
+             <select required  id="branch" name="branch" formControlName="Branch" [(ngModel)]='branch'> 
+              <option value="undefined">Please select Branch</option>
+              <option *ngFor="let branch of branchList" [ngValue]="branch.serviceBranch">{{branch.serviceBranch}}</option>
+            </select>
           </td>
           <td>
             <button type="button" class="btn btn-outline-primary  wrapper" (click)="addBranch()">
@@ -50,7 +56,10 @@
         <table class="table-borderless">
           <tr>
             <td >
-              <input type="text" id="publication" name="publication" formControlName="Publications" [(ngModel)]='publications'>    
+              <select required id="publication" name ="publicaion" formControlName="Publications" [(ngModel)]='publications'>
+                <option value='undefined'>Please select Publications</option>
+                <option *ngFor = 'let publication of publicationList'[ngValue] ='publication.servicePublications'>{{publication.servicePublications}}</option>
+              </select>   
             </td>
             <td>
               <button type="button" class="btn btn-outline-primary  wrapper" (click)="addPublication()">

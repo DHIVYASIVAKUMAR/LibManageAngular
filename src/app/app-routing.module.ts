@@ -18,10 +18,10 @@ const routes: Routes = [
   {path : 'studentHome', component : StudentHomeComponent},
   {path : 'newBook', component : NewBookComponent},
   {path : 'newStudent', component : NewStudentComponent},
-  {path : 'editBook', component : EditBookComponent},
-  {path : 'editStudent', component :EditStudentComponent },
-  {path : 'editIssuedBook', component :EditIssuedBookComponent },
-  {path : 'studentDetail', component:StudentDetailComponent}
+  {path : 'editBook/:id', component : EditBookComponent},
+  {path : 'editStudent/:id', component :EditStudentComponent },
+  {path : 'editIssuedBook/:id', component :EditIssuedBookComponent },
+  {path : 'studentDetail/:id', component:StudentDetailComponent}
 ];
 
 @NgModule({

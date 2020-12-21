@@ -17,7 +17,10 @@ body {
    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
    text-transform:uppercase;
 }
-
+#check input[type=checkbox]:checked {
+  background-color: #68a72d !important;
+  color: #db0a0a !important;
+}
 
 /*** Table Styles **/
 
@@ -97,14 +100,14 @@ tr:last-child td:last-child {
 }
  
 td {
-  background:#FFFFFF;
+  background:#cacaca;
   padding:20px;
   text-align:left;
   vertical-align:middle;
   font-weight:300;
   font-size:18px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-  border-right: 1px solid #C1C3D1;
+  border-right: 1px solid #5e5e5e;
 }
 
 td:last-child {
@@ -146,12 +149,16 @@ td.text-right {
 .btn{
   float:left;
 }
+input{
+  color:#0940fd !important;
+}
 
 /* two button on same line*/
 body {
   padding: 0 50px;
   background-color: #f4f4f4;
   font-family: source-sans-pro, sans-serif;
+  color: #050505;
 }
 
 /*:focus {
