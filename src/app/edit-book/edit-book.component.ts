@@ -9,7 +9,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-book.component.css']
 })
 export class EditBookComponent implements OnInit {
+  editBookForm: FormGroup = new FormGroup({});
   jsonData:any;
+  jsonEditData:any;
   subUrl: string = "";
   url = "https://localhost:44369/api/";
   bookName: any;
@@ -21,34 +23,52 @@ export class EditBookComponent implements OnInit {
   newAuthor: any;
   newBranch: any;
   newPublication: any;
+  editBookid:any;
   authorList: any;
   branchList: any;
   publicationList: any;
   constructor(private http:HttpClient, private router:ActivatedRoute) { }
 
   ngOnInit(): void {
+this.editBookForm = new FormGroup({
+    BookName: new FormControl(),
+    SerialNumber: new FormControl(),
+    AuthorName: new FormControl(),
+   Branch: new FormControl(),
+    Publications: new FormControl(),
+    IsAvailable: new FormControl()
+  });
+
     let id = this.router.snapshot.paramMap.get('id');
+    this.editBookid = id;
     this.http.get('https://localhost:44369/api/ServiceBooks/GetServiceBooks/'+id).toPromise().then((data:any) => {
       this.jsonData = data;
       console.log(this.jsonData);
+      alert(this.jsonData.serviceAuthorName);
     })
     this.http.get(this.url + 'ServiceAuthors/GetAuthor').toPromise().then((data: any) => { this.authorList = data; });
     this.http.get(this.url + 'ServiceBooks/GetBranch').toPromise().then((data: any) => { this.branchList = data; });
     this.http.get(this.url + 'ServiceBooks/GetPublication').toPromise().then((data: any) => { this.publicationList = data; });
   }
 
-  editBookForm = new FormGroup({
-    serviceBookName: new FormControl(),
-    serviceSerialNumber: new FormControl(),
-    serviceAuthorName: new FormControl(),
-    serviceBranch: new FormControl(),
-    servicePublications: new FormControl(),
-    serviceIsAvailable: new FormControl()
-  });
+  
 
   onSubmit() {
-    console.log(this.editBookForm.value);
-  }
+    this.subUrl = this.url + 'ServiceBooks/PutServiceBooks/'+this.editBookid;
+    this.http.put(this.subUrl, {
+      serviceBookName: this.bookName,
+      serviceSerialNumber: this.serialNum,
+      serviceAuthorName: this.authorName,
+      serviceBranch: this.branch,
+      servicePublications: this.publications,
+      serviceIsAvailable: this.isAvailable
+    }).toPromise().then((data: any) => {
+      this.jsonEditData = data;
+      alert('Book Saved successfullty ! ...');
+      console.log("data "+ data);
+    });
+    window.location.reload();
+    }
   addAuthor(): void {
     this.newAuthor = prompt("New Author");
     this.subUrl = this.url + 'ServiceAuthors/PostServiceAuthor';

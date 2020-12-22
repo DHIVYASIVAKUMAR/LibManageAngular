@@ -46,7 +46,7 @@
                         </button>
                       </div> 
                       <div *ngIf="book.serviceIsAvailable; else elseBlocks">
-                          <button type="button" class="btn btn-outline-primary topcoat-button-bar__button" click="">
+                          <button type="button" class="btn btn-outline-primary topcoat-button-bar__button" (click)="select(book.serviceBookId)">
                               Issue
                           </button>
                       </div>             

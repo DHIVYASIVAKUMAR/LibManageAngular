@@ -41,7 +41,7 @@
     margin: 0;
     outline: 0;
     padding: 15px;
-    width: 100%;
+    width: 330px !important;
     background-color: #e8eeef;
     color: #8a97a0;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
@@ -67,7 +67,7 @@
     text-align: center;
     font-style: normal;
     border-radius: 5px;
-    width: 100%;
+    width: 330px !important;
     border: 1px solid #030303;
     border-width: 1px 1px 3px;
     box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
@@ -108,26 +108,30 @@
     text-shadow: 0 1px 0 rgba(255,255,255,0.2);
     border-radius: 100%;
   }
-  /*add*/
-  .wrapper{    
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-    color:#FFF
-  }
- #branch{  
-    width: 440px;padding-top: 15px;
-    padding-bottom: 15px;
-    height: 52px;
+a, a:hover {
+    color: white;
 }
-#gender{
-  padding-top: 15px;
-  padding-bottom: 15px;
-  height: 52px;
+.details {
+    padding-left: 400px;
 }
-  
+h2 {
+    padding-bottom: 50px;
+}
+dd a, dd a:hover {
+    color: dodgerblue;
+}
+dd, dt {
+    font-size: 20px;
+    padding-bottom: 11px;
+}
+dl dd {
+    padding-left: 20px;
+}
+h1{
+    text-align: center;
+    margin-bottom: 55px;
+}
+
   @media screen and (min-width: 480px) {
   
     form {

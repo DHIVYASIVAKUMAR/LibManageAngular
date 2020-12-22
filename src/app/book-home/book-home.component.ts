@@ -33,5 +33,7 @@ export class BookHomeComponent implements OnInit {
 editBook(serviceBookId:any):void{
 this.router.navigate(['/editBook',serviceBookId]);
 }
-
+select(id:any):void{
+  this.router.navigate(['/selectStudent',id]);
+}
 }

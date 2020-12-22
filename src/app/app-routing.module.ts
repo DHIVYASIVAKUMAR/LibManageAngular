@@ -10,6 +10,8 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { EditIssuedBookComponent } from './edit-issued-book/edit-issued-book.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
+import { SelectStudComponent } from './select-stud/select-stud.component';
+import { IssueBookComponent } from './issue-book/issue-book.component';
 
 const routes: Routes = [
   {path : 'home', component : HomeComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path : 'editBook/:id', component : EditBookComponent},
   {path : 'editStudent/:id', component :EditStudentComponent },
   {path : 'editIssuedBook/:id', component :EditIssuedBookComponent },
-  {path : 'studentDetail/:id', component:StudentDetailComponent}
+  {path : 'studentDetail/:id', component:StudentDetailComponent},
+  {path:'selectStudent/:id',component:SelectStudComponent},
+  {path:'newbookIssue', component:IssueBookComponent}
 ];
 
 @NgModule({
@@ -39,5 +43,7 @@ export const routingComponents = [
   EditBookComponent,
   EditStudentComponent,
   EditIssuedBookComponent,
-  StudentDetailComponent
+  StudentDetailComponent,
+  SelectStudComponent,
+  IssueBookComponent
 ];

@@ -1,0 +1,35 @@
+<button type="button" class="btn btn-primary btn-lg pull-right" style="margin-right: 11px;" routerLink="/newStudent">Create New</button>
+<table class="table-fill"style="margin-top: 120px;">
+    <thead>
+        <tr>
+            <th class="text-left" style="padding-right: 90px;">Name</th>
+            <th class="text-left">Branch</th>
+            <th class="text-left">Gender</th>
+            <th class="text-left">Phone Number</th>
+            <th class="text-left">Address</th>
+            <th class="text-left">city</th>
+            <th class="text-left">Actions</th>           
+        </tr>
+    </thead>
+    <tbody class="table-hover">
+        <tr *ngFor="let student of studentData">
+            <td>{{student.serviceStudentName}}</td>
+            <td>{{student.serviceStudentBranch}}</td>
+            <td>
+                <div *ngIf="student.serviceGender == 0">Female</div>
+                <div *ngIf="student.serviceGender == 1">Male</div>
+                <div *ngIf="student.serviceGender == 2">Gender Less</div>
+            </td>
+            <td>{{student.servicePhoneNumber}}</td>
+            <td>{{student.serviceAddress}}</td>
+            <td>{{student.serviceCity}}</td>            
+            <td>
+                <div class="topcoat-button-bar">
+                    <div class="topcoat-button-bar__item">
+                        <button type="button" class="btn btn-outline-primary  topcoat-button-bar__button" (click)="select(student.serviceStudentId)">
+                            Select
+                        </button>
+                    </div>
+            </div>   
+    </tbody>
+</table>

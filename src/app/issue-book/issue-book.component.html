@@ -1,0 +1,56 @@
+<h1>Book Issue</h1>
+<div class="details">
+	<dl class="dl-horizontal">
+		<dt>
+			<label>Book Name </label>
+		</dt>
+		<dd >
+			{{bookData.serviceBookName}}
+		</dd>
+		<dt>
+			<label>Author Name </label>
+		</dt>
+		<dd >
+			{{bookData.serviceAuthorName}}
+        </dd>
+        <dt>
+			<label>Book Branch </label>
+		</dt>
+		<dd>
+			{{bookData.serviceBranch}}
+        </dd>
+        <dt>
+			<label>Publication</label>
+		</dt>
+		<dd>
+			{{bookData.servicePublications}}
+        </dd>
+        <dt>
+			<label>Student </label>
+		</dt>
+		<dd>
+			{{studentData.serviceStudentName}}
+        </dd>
+        <dt>
+			<label>Email </label>
+		</dt>
+		<dd>
+			{{studentData.serviceEmail}}
+        </dd>
+        <dt>
+			<label>From Date </label>
+		</dt>
+		<dd>
+			<input type='date' id="fromDate" [(ngModel)]="fromDate"> 
+        </dd>
+        <dt>
+			<label>To Date </label>
+		</dt>
+		<dd >
+			<input type='date' id="toDate" [(ngModel)]="toDate"> 
+        </dd>		
+        <dd>
+            <button (click)="onSubmit()">Issue Book</button>
+        </dd>
+	</dl>
+</div>

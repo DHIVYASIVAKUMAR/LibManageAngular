@@ -1,5 +1,8 @@
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-edit-issued-book',
   templateUrl: './edit-issued-book.component.html',
@@ -7,9 +10,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class EditIssuedBookComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private http:HttpClient,private router: ActivatedRoute) { }
+jsonData:any;
+id:any;
   ngOnInit(): void {
+    let id = this.router.snapshot.paramMap.get('id');
+this.id  = id;
+this.http.get('https://localhost:44369/api/ServiceIssuedBooks/GetServiceIssuedBooks/'+this.id).toPromise().then((data:any) => {this.jsonData = data;console.log(data);});
   }
   editIssuedBookForm = new FormGroup({
     serviceBookName: new FormControl(),
@@ -21,6 +28,7 @@ export class EditIssuedBookComponent implements OnInit {
   });
 
   onSubmit() {
+    
     console.log(this.editIssuedBookForm.value);
   }
 }
