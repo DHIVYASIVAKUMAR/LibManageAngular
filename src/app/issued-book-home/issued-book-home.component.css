@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
 body {
-  background-color: #3e94ec;
+  background-color: #000000;
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -224,7 +224,7 @@ body {
 
 .topcoat-button-bar__button {
   padding: 0 1.25rem;
-  border: 1px solid #a5a8a8;
+  border: 1px solid #2e3030;
   /* Important inheritance to manipulate border radius from parent */
   border-radius: inherit;
   background-color: #e5e9e8;
@@ -251,7 +251,7 @@ body {
 }
 
 .topcoat-button-bar__button:focus {
-  border: 1px solid #0940fd;
+  border: 1px solid #0e0e0f;
   -webkit-box-shadow: 0 0 0 2px #6fb5f1;
   box-shadow: 0 0 0 2px #6fb5f1;
   z-index: 1;

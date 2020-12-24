@@ -58,8 +58,9 @@ export class NewBookComponent implements OnInit {
       this.jsonData = data;
       alert('Book Created successfullty ! ...');
       console.log(data);
+      window.location.reload();
     });
-    window.location.reload();
+    
   }
 
   addAuthor(): void {

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-book',
@@ -27,7 +27,7 @@ export class EditBookComponent implements OnInit {
   authorList: any;
   branchList: any;
   publicationList: any;
-  constructor(private http:HttpClient, private router:ActivatedRoute) { }
+  constructor(private http:HttpClient, private router:ActivatedRoute, private navigateRouter:Router) { }
 
   ngOnInit(): void {
 this.editBookForm = new FormGroup({
@@ -38,24 +38,26 @@ this.editBookForm = new FormGroup({
     Publications: new FormControl(),
     IsAvailable: new FormControl()
   });
-
-    let id = this.router.snapshot.paramMap.get('id');
-    this.editBookid = id;
-    this.http.get('https://localhost:44369/api/ServiceBooks/GetServiceBooks/'+id).toPromise().then((data:any) => {
-      this.jsonData = data;
-      console.log(this.jsonData);
-      alert(this.jsonData.serviceAuthorName);
-    })
-    this.http.get(this.url + 'ServiceAuthors/GetAuthor').toPromise().then((data: any) => { this.authorList = data; });
+ this.http.get(this.url + 'ServiceAuthors/GetAuthor').toPromise().then((data: any) => { this.authorList = data; });
     this.http.get(this.url + 'ServiceBooks/GetBranch').toPromise().then((data: any) => { this.branchList = data; });
     this.http.get(this.url + 'ServiceBooks/GetPublication').toPromise().then((data: any) => { this.publicationList = data; });
-  }
-
-  
+    let id = this.router.snapshot.paramMap.get('id');
+    this.editBookid = id;
+    this.http.get('https://localhost:44369/api/ServiceBooks/GetServiceBooks/'+id).toPromise().then((data:any) => {      
+      this.bookName = data.serviceBookName;
+      this.authorName = data.serviceAuthorName;
+      this.branch = data.serviceBranch;
+      this.publications = data.servicePublications;
+      this.isAvailable = data.serviceIsAvailable;
+      this.serialNum = data.serviceSerialNumber;
+    })
+   
+  } 
 
   onSubmit() {
     this.subUrl = this.url + 'ServiceBooks/PutServiceBooks/'+this.editBookid;
     this.http.put(this.subUrl, {
+      serviceBookId : this.editBookid,
       serviceBookName: this.bookName,
       serviceSerialNumber: this.serialNum,
       serviceAuthorName: this.authorName,
@@ -65,9 +67,9 @@ this.editBookForm = new FormGroup({
     }).toPromise().then((data: any) => {
       this.jsonEditData = data;
       alert('Book Saved successfullty ! ...');
-      console.log("data "+ data);
-    });
-    window.location.reload();
+      console.log(data);      
+      this.navigateRouter.navigate(['bookHome/']);
+    });    
     }
   addAuthor(): void {
     this.newAuthor = prompt("New Author");

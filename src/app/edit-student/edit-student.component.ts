@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-student',
@@ -21,20 +21,31 @@ export class EditStudentComponent implements OnInit {
   phoneNum: any;
   gender: any;
   branches: any;
-  name: any;
+  name: any ;
   newBranch: any;
-  constructor(private router: ActivatedRoute, private http: HttpClient) { }
+  constructor(private router: ActivatedRoute, private http: HttpClient,private navigateRouter: Router) { }
 
   ngOnInit(): void {
     this.id = this.router.snapshot.paramMap.get('id');
     this.http.get(this.url + 'ServiceStudentBranches/GetstudentBranches').toPromise().then((data: any) => { this.BranchList = data; });
-    this.http.get(this.url + 'ServiceStudents/GetServiceStudents/' + this.id).toPromise().then((data: any) => { this.studentData = data;  });
+    this.http.get(this.url + 'ServiceStudents/GetServiceStudents/' + this.id).
+    toPromise().then((data: any) => {       
+      console.log(data);
+      this.name=data.serviceStudentName;
+      this.branches = data.serviceStudentBranch;
+      this.gender = data.serviceGender;
+      this.phoneNum = data.servicePhoneNumber;
+      this.address = data.serviceAddress;
+      this.city = data.serviceCity;
+      this.email = data.serviceEmail,
+      this.password = data.servicePassword;
+    });
   }
   editStudentForm = new FormGroup({
     serviceStudentName: new FormControl(),
     serviceStudentBranch: new FormControl(),
     serviceGender: new FormControl(),
-    servicePhoneNumber: new FormControl(),
+    servicePhoneNumber: new FormControl(),                   
     serviceAddress: new FormControl(),
     serviceCity: new FormControl(),
     serviceEmail: new FormControl(),
@@ -42,9 +53,9 @@ export class EditStudentComponent implements OnInit {
   });
 
   onSubmit() {
-    this.subUrl = this.url + 'ServiceStudents/PostStudents';
-    this.http.post(this.subUrl, {
-      serviceStudentId:this.studentData.serviceStudentId,
+    this.subUrl = this.url + 'ServiceStudents/PutServiceStudents/'+this.id;
+    this.http.put(this.subUrl, {     
+      serviceStudentId : this.id, 
       serviceStudentName: this.name,
       serviceStudentBranch: this.branches,
       serviceGender: this.gender,
@@ -55,10 +66,10 @@ export class EditStudentComponent implements OnInit {
       servicePassword: this.password
     }).toPromise().then((data: any) => { 
       console.log(data); 
-      if(data){alert('Saved Successfully');}
-    });
-    
-   // window.location.reload();
+      if(data){alert('Saved Successfully');
+      this.navigateRouter.navigate(['studentHome/']);
+    }
+    }); 
   }
 
   addBranch(): void {

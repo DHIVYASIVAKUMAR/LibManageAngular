@@ -5,55 +5,55 @@
 			<label>Name</label>
 		</dt>
 		<dd id="name">
-			{{jsonData.serviceStudentName}}
+			{{name}}
 		</dd>
 		<dt>
 			<label>Branch</label>
 		</dt>
 		<dd id="branch">
-			{{jsonData.serviceStudentBranch}}
+			{{branches}}
 		</dd>
 		<dt>
 			<label>Gender</label>
 		</dt>
-		<dd id="gender" *ngIf="jsonData.serviceGender == 0">
+		<dd id="gender" *ngIf="gender == 0">
 			Female
 		</dd>
-		<dd id="gender" *ngIf="jsonData.serviceGender == 1">
+		<dd id="gender" *ngIf="gender == 1">
 			Male
 		</dd>
-		<dd id="gender" *ngIf="jsonData.serviceGender == 2">
+		<dd id="gender" *ngIf="gender == 2">
 			Gender Less
 		</dd>
 		<dt>
 			<label>Phone Number</label>
 		</dt>
 		<dd id="phoneNumber">
-			{{jsonData.servicePhoneNumber}}
+			{{phoneNum}}
 		</dd>
 		<dt>
 			<label>Address</label>
 		</dt>
 		<dd id="address">
-			{{jsonData.serviceAddress}}
+			{{address}}
 		</dd>
 		<dt>
 			<label>City</label>
 		</dt>
 		<dd id="city">
-			{{jsonData.serviceCity}}
+			{{city}}
 		</dd>
 		<dt>
 			<label>Email</label>
 		</dt>
 		<dd id="email">
-			{{jsonData.serviceEmail}}
+			{{email}}
 		</dd>
 		<dt>
 			<label>Password</label>
 		</dt>
 		<dd id="password">
-			{{jsonData.servicePassword}}
+			{{password}}
 		</dd>
 	</dl>
 </div>

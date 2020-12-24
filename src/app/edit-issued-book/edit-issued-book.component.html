@@ -3,36 +3,36 @@
 <form [formGroup]="editIssuedBookForm" (ngSubmit)="onSubmit()"> 
     <p>
       <label for="bookName">Book Name</label>
-      <input type="text" id="bookName" name="bookname" formControlName="serviceBookName">
+      <input type="text" id="bookName" name="bookname" formControlName="serviceBookName" [(ngModel)]="bookName" disabled>
     </p>
    
     <p>
       <label for="authorName">Author Name </label>
-      <input type="text" id="authorName" name="authorName" formControlName="serviceAuthorName">
+      <input type="text" id="authorName" name="authorName" formControlName="serviceAuthorName" [(ngModel)]="authorName" disabled>
     </p>
    
     <p>
       <label for="branch">Branch </label>
-      <input type="text" id="branch" name="branch" formControlName="serviceSerialNumber">
+      <input type="text" id="branch" name="branch" formControlName="serviceBranch" [(ngModel)]="branch" disabled>
     </p>
 
     <p>
       <label for="student">Student </label>
-      <input type="text" id="student" name="student" formControlName="serviceBranch">   
+      <input type="text" id="student" name="student" formControlName="serviceStudent" [(ngModel)]="student" disabled>   
     </p>
    
     <p>
         <label for="email">Email </label>
-        <input type="text" id="email" name="email" formControlName="servicePublications">     
+        <input type="text" id="email" name="email" formControlName="serviceEmail" [(ngModel)]="email"  disabled>     
     </p>
 
     <p>
       <label for="fromDate">From Date</label>
-      <input type="Date" id="fromDate" name="fromDate" formControlName="serviceIsAvailable">
+      <input type="Date" id="fromDate" name="fromDate" formControlName="fromDate" [(ngModel)]="fromDate">
     </p>
     <p>
       <label for="toDate">To Date </label>
-      <input type="Date" id="toDate" name="toDate" formControlName="serviceIsAvailable">
+      <input type="Date" id="toDate" name="toDate" formControlName="toDate" [(ngModel)]="toDate">
     </p>
    
     <p>

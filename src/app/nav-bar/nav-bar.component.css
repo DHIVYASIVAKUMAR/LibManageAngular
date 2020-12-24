@@ -1,0 +1,12 @@
+h3{
+    margin-right: 900px;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+    font-size: large;
+    color: white;
+}
+.navbar-inverse .navbar-nav>li>a {
+    font-size: large;
+    color: white;
+}

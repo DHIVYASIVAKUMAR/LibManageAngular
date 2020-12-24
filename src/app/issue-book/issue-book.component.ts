@@ -4,29 +4,38 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-issue-book',
   templateUrl: './issue-book.component.html',
   styleUrls: ['./issue-book.component.css']
 })
 export class IssueBookComponent implements OnInit {
-  bookData:any;
-  studentData:any;
+  
+  bookName:any;
+  authorName:any;
+  branch:any;
+  publications:any;
+  
+  studentName:any;
+  email:any;
   bookId:any;
-  student:any;
+  studentId:any;
   fromDate:any;
   toDate:any;
   constructor(private http:HttpClient, private myService:BookIssueServiceService,private router:Router) { }  
     ngOnInit(): void {     
       this.bookId = this.myService.getBookId();
-      this.student = this.myService.getStudentId();
+      this.studentId = this.myService.getStudentId();
       this.http.get('https://localhost:44369/api/ServiceBooks/GetServiceBooks/'+this.bookId).toPromise().then((data:any) => {
-        this.bookData = data;
+        this.bookName = data.serviceBookName;
+        this.authorName = data.serviceAuthorName;
+        this.branch = data.serviceBranch;
+        this.publications= data.servicePublications;
         console.log(data);
       });
-      this.http.get('https://localhost:44369/api/ServiceStudents/GetServiceStudents/'+this.student).toPromise().then((data:any) => {
-        this.studentData = data;
+      this.http.get('https://localhost:44369/api/ServiceStudents/GetServiceStudents/'+this.studentId).toPromise().then((data:any) => {
+        this.studentName = data.serviceStudentName;
+        this.email = data.serviceEmail;
         console.log(data);
       });
     }  
@@ -34,7 +43,7 @@ export class IssueBookComponent implements OnInit {
     onSubmit() {  
       this.http.post('https://localhost:44369/api/ServiceIssuedBooks/PostServiceIssuedBooks',{
         bookId : this.bookId,
-        studentId:this.student,
+        studentId:this.studentId,
         serviceFromDate:this.fromDate,
         serviceToDate:this.toDate
       }).toPromise().then((data:any) =>{

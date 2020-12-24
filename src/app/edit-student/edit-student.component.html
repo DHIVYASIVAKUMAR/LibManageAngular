@@ -3,7 +3,7 @@
 <form [formGroup]="editStudentForm" (ngSubmit)="onSubmit()"> 
     <p>
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" formControlName="serviceStudentName"  [value]="studentData.serviceStudentName" [(ngModel)]='name'>
+      <input type="text" id="name" name="name" formControlName="serviceStudentName"   [(ngModel)]='name'>
     </p>
    
     
@@ -13,7 +13,7 @@
         <td>             
              <select required id="branch" name="branch" formControlName="serviceStudentBranch" [(ngModel)]='branches'>
                <option value="undefined">Please select Branch</option>
-               <option *ngFor='let branch of BranchList'>{{branch.serviceStudentBranch}}</option>
+               <option *ngFor='let branch of BranchList'[value]="branch.serviceStudentBranch">{{branch.serviceStudentBranch}}</option>
              </select>
         </td>
         <td>
@@ -25,18 +25,14 @@
           </button>
         </td>
       </tr>
-    </table> 
- 
-      
-
-   
+    </table>    
     <p>
       <label for="gender">Gender </label>
       <select id="gender" name="gender" formControlName="serviceGender" [(ngModel)]='gender'>
         <option value="undefined">Please Select Gender</option>
-        <option>Female</option>
-        <option>Male</option>
-        <option>Gender Less</option>
+        <option value=0>Female</option>
+        <option value=1>Male</option>
+        <option value=2>Gender Less</option>
       </select>
     </p>
 
