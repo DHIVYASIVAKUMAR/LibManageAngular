@@ -35,17 +35,18 @@
   textarea,
   select {
     background: rgba(255,255,255,0.1);
-    border: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
     font-size: 16px;
     height: auto;
     margin: 0;
     outline: 0;
     padding: 15px;
     width: 100%;
-    background-color: #e8eeef;
+    background-color: #ffffff;
     color: #8a97a0;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    margin-bottom: 30px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;    
   }
   
   input[type="radio"],
@@ -57,6 +58,13 @@
     padding: 6px;
     height: 32px;
     border-radius: 2px;
+ 
+    width: 402px;
+
+  }
+  .help-block{
+    color: red;
+    background-color: rgb(255, 202, 202);
   }
   
   button {
@@ -88,6 +96,7 @@
     display: block;
     margin-bottom: 8px;
     font-size: 120%;
+    margin-top: 30px;
   }
   
   label.light {

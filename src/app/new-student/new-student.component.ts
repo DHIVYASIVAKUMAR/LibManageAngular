@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup , Validators} from '@angular/forms';
@@ -22,7 +23,7 @@ gender:any;
 branches:any;
 name:any;
 newBranch:any;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router:Router) {
     this.http.get(this.url+'ServiceStudentBranches/GetstudentBranches').toPromise().then((data:any)=>{this.branchList = data;});
    }
 
@@ -52,7 +53,7 @@ newBranch:any;
     servicePassword :this.password
   }).toPromise().then((data:any)=>{console.log(data);});    
     alert('Created Successfully');
-    window.location.reload();
+    this.router.navigate(['studentHome']);
   }
 
   addBranch():void{

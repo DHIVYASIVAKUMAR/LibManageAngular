@@ -12,7 +12,7 @@
       <table class="table-borderless">
         <tr>
           <td > 
-            <select required  id="authorName" name="authorName" formControlName="AuthorName" class="form-control" [(ngModel)]='authorName'>
+            <select required  id="authorName" name="authorName" style="width: 402px;" formControlName="AuthorName" class="form-control" [(ngModel)]='authorName'>
               <option value="undefined">Please select Author</option>
               <option *ngFor="let author of authorList" [ngValue]="author.serviceAuthorName">{{author.serviceAuthorName}}</option>
             </select>
@@ -36,7 +36,7 @@
       <table class="table-borderless">
         <tr>
           <td >
-             <select required  id="branch" name="branch" formControlName="Branch" [(ngModel)]='branch'> 
+             <select required  id="branch" name="branch" formControlName="Branch" style="width: 402px;" [(ngModel)]='branch'> 
               <option value="undefined">Please select Branch</option>
               <option *ngFor="let branch of branchList" [ngValue]="branch.serviceBranch">{{branch.serviceBranch}}</option>
             </select>
@@ -56,7 +56,7 @@
         <table class="table-borderless">
           <tr>
             <td >
-              <select required id="publication" name ="publicaion" formControlName="Publications" [(ngModel)]='publications'>
+              <select required id="publication" name ="publicaion" formControlName="Publications" style="width: 402px;" [(ngModel)]='publications'>
                 <option value='undefined'>Please select Publications</option>
                 <option *ngFor = 'let publication of publicationList'[ngValue] ='publication.servicePublications'>{{publication.servicePublications}}</option>
               </select>   
@@ -78,7 +78,8 @@
     </p>
    
     <p>
-      <button type="submit" >Create</button>
+      <button type="submit" style="width: 140px; margin-left: 100px;">Create</button>
+      <button type="button" style="width: 140px; margin-left: 15px;"routerLink="/bookHome">Back</button>
     </p>
    
   </form>

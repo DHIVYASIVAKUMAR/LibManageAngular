@@ -31,13 +31,13 @@ export class EditBookComponent implements OnInit {
 
   ngOnInit(): void {
 this.editBookForm = new FormGroup({
-    BookName: new FormControl(),
-    SerialNumber: new FormControl(),
-    AuthorName: new FormControl(),
-   Branch: new FormControl(),
-    Publications: new FormControl(),
-    IsAvailable: new FormControl()
-  });
+    BookName: new FormControl( null,[Validators.required]),
+    SerialNumber: new FormControl(null,[ Validators.required]),
+    AuthorName: new FormControl(null, [Validators.required]),
+   Branch: new FormControl(null, [Validators.required]),
+    Publications: new FormControl( null,[Validators.required]),
+    IsAvailable: new FormControl( null,[Validators.required])
+  });                          
  this.http.get(this.url + 'ServiceAuthors/GetAuthor').toPromise().then((data: any) => { this.authorList = data; });
     this.http.get(this.url + 'ServiceBooks/GetBranch').toPromise().then((data: any) => { this.branchList = data; });
     this.http.get(this.url + 'ServiceBooks/GetPublication').toPromise().then((data: any) => { this.publicationList = data; });
@@ -50,11 +50,14 @@ this.editBookForm = new FormGroup({
       this.publications = data.servicePublications;
       this.isAvailable = data.serviceIsAvailable;
       this.serialNum = data.serviceSerialNumber;
-    })
+    });
    
   } 
 
   onSubmit() {
+   
+    if(this.bookName != "" || this.serialNum != "" || this.authorName !=  "" || this.branch != "undefined" || this.publications != "undefined")
+    {
     this.subUrl = this.url + 'ServiceBooks/PutServiceBooks/'+this.editBookid;
     this.http.put(this.subUrl, {
       serviceBookId : this.editBookid,
@@ -70,6 +73,13 @@ this.editBookForm = new FormGroup({
       console.log(data);      
       this.navigateRouter.navigate(['bookHome/']);
     });    
+    }
+    else
+    {
+      alert('Please fill required data ');
+      window.location.reload();
+    }
+    
     }
   addAuthor(): void {
     this.newAuthor = prompt("New Author");
