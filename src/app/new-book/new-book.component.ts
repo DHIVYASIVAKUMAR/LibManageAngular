@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -26,7 +27,7 @@ export class NewBookComponent implements OnInit {
   branchList: any;
   publicationList: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router :Router) {
     this.http.get(this.url + 'ServiceAuthors/GetAuthor').toPromise().then((data: any) => { this.authorList = data; });
     this.http.get(this.url + 'ServiceBooks/GetBranch').toPromise().then((data: any) => { this.branchList = data; });
     this.http.get(this.url + 'ServiceBooks/GetPublication').toPromise().then((data: any) => { this.publicationList = data; });
@@ -34,33 +35,39 @@ export class NewBookComponent implements OnInit {
 
   ngOnInit(): void {
     this.newBookForm = new FormGroup({
-      BookName: new FormControl(),
-      SerialNumber: new FormControl(),
-      AuthorName: new FormControl(),
-      Branch: new FormControl(),
-      Publications: new FormControl(),
-      IsAvailable: new FormControl()
+      BookName: new FormControl(null, [Validators.required]),
+      SerialNumber: new FormControl(null, [Validators.required]),
+      AuthorName: new FormControl(null, [Validators.required]),
+      Branch: new FormControl(null, [Validators.required]),
+      Publications: new FormControl(null, [Validators.required]),
+      IsAvailable: new FormControl(null, [Validators.required])
     });
 
 
   }
 
   onSubmit(): void {
-    this.subUrl = this.url + 'ServiceBooks/PostServiceBooks';
-    this.http.post(this.subUrl, {
-      serviceBookName: this.bookName,
-      serviceSerialNumber: this.serialNum,
-      serviceAuthorName: this.authorName,
-      serviceBranch: this.branch,
-      servicePublications: this.publications,
-      serviceIsAvailable: this.isAvailable
-    }).toPromise().then((data: any) => {
-      this.jsonData = data;
-      alert('Book Created successfullty ! ...');
-      console.log(data);
-      window.location.reload();
-    });
-    
+    if (this.newBookForm.status != 'INVALID') {
+      this.subUrl = this.url + 'ServiceBooks/PostServiceBooks';
+      this.http.post(this.subUrl, {
+        serviceBookName: this.bookName,
+        serviceSerialNumber: this.serialNum,
+        serviceAuthorName: this.authorName,
+        serviceBranch: this.branch,
+        servicePublications: this.publications,
+        serviceIsAvailable: this.isAvailable
+      }).toPromise().then((data: any) => {
+        this.jsonData = data;
+        alert('Book Created successfullty ! ...');
+        console.log(data);
+       this.router.navigate(['/bookHome']);
+      });
+
+    }
+    else {
+      alert('Please fill required data ');
+    }
+
   }
 
   addAuthor(): void {

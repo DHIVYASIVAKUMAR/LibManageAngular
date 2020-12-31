@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IssuedBookHomeComponent implements OnInit {
   issuedBookData:any;  
+  searchString?:string;
   constructor(private http:HttpClient, private router:Router) { }
   ngOnInit(): void {
     this.http.get('https://localhost:44369/api/ServiceIssuedBooks/GetissuedBook')

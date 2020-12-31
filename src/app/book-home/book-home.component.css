@@ -7,6 +7,13 @@ body {
   font-weight: 400;
   text-rendering: optimizeLegibility;
 }
+#search{  
+    margin-top: 100px;
+    height: 39.5px;
+    width: 517px;
+    margin-left: 300px;
+    font-size: 20px;
+}
 
 .table-title h3 {
    color: #fafafa;

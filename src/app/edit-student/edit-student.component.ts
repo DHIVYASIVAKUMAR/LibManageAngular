@@ -21,55 +21,62 @@ export class EditStudentComponent implements OnInit {
   phoneNum: any;
   gender: any;
   branches: any;
-  name: any ;
+  name: any;
   newBranch: any;
-  constructor(private router: ActivatedRoute, private http: HttpClient,private navigateRouter: Router) { }
+  constructor(private router: ActivatedRoute, private http: HttpClient, private navigateRouter: Router) { }
 
   ngOnInit(): void {
     this.id = this.router.snapshot.paramMap.get('id');
     this.http.get(this.url + 'ServiceStudentBranches/GetstudentBranches').toPromise().then((data: any) => { this.BranchList = data; });
     this.http.get(this.url + 'ServiceStudents/GetServiceStudents/' + this.id).
-    toPromise().then((data: any) => {       
-      console.log(data);
-      this.name=data.serviceStudentName;
-      this.branches = data.serviceStudentBranch;
-      this.gender = data.serviceGender;
-      this.phoneNum = data.servicePhoneNumber;
-      this.address = data.serviceAddress;
-      this.city = data.serviceCity;
-      this.email = data.serviceEmail,
-      this.password = data.servicePassword;
-    });
+      toPromise().then((data: any) => {
+        console.log(data);
+        this.name = data.serviceStudentName;
+        this.branches = data.serviceStudentBranch;
+        this.gender = data.serviceGender;
+        this.phoneNum = data.servicePhoneNumber;
+        this.address = data.serviceAddress;
+        this.city = data.serviceCity;
+        this.email = data.serviceEmail,
+          this.password = data.servicePassword;
+      });
   }
   editStudentForm = new FormGroup({
-    serviceStudentName: new FormControl(),
-    serviceStudentBranch: new FormControl(),
-    serviceGender: new FormControl(),
-    servicePhoneNumber: new FormControl(),                   
-    serviceAddress: new FormControl(),
-    serviceCity: new FormControl(),
-    serviceEmail: new FormControl(),
-    servicePassword: new FormControl()
+    serviceStudentName: new FormControl(null, [Validators.required]),
+    serviceStudentBranch: new FormControl(null, [Validators.required]),
+    serviceGender: new FormControl(null, [Validators.required]),
+    servicePhoneNumber: new FormControl(null, [Validators.required]),
+    serviceAddress: new FormControl(null, [Validators.required]),
+    serviceCity: new FormControl(null, [Validators.required]),
+    serviceEmail: new FormControl(null, [Validators.required]),
+    servicePassword: new FormControl(null, [Validators.required])
   });
 
   onSubmit() {
-    this.subUrl = this.url + 'ServiceStudents/PutServiceStudents/'+this.id;
-    this.http.put(this.subUrl, {     
-      serviceStudentId : this.id, 
-      serviceStudentName: this.name,
-      serviceStudentBranch: this.branches,
-      serviceGender: this.gender,
-      servicePhoneNumber: this.phoneNum,
-      serviceAddress: this.address,
-      serviceCity: this.city,
-      serviceEmail: this.email,
-      servicePassword: this.password
-    }).toPromise().then((data: any) => { 
-      console.log(data); 
-      if(data){alert('Saved Successfully');
-      this.navigateRouter.navigate(['studentHome/']);
+    if (this.editStudentForm.status != 'INVALID') {
+      this.subUrl = this.url + 'ServiceStudents/PutServiceStudents/' + this.id;
+      this.http.put(this.subUrl, {
+        serviceStudentId: this.id,
+        serviceStudentName: this.name,
+        serviceStudentBranch: this.branches,
+        serviceGender: this.gender,
+        servicePhoneNumber: this.phoneNum,
+        serviceAddress: this.address,
+        serviceCity: this.city,
+        serviceEmail: this.email,
+        servicePassword: this.password
+      }).toPromise().then((data: any) => {
+        console.log(data);
+        if (data) {
+          alert('Saved Successfully');
+          this.navigateRouter.navigate(['studentHome/']);
+        }
+      });
     }
-    }); 
+    else {
+      alert('Please fill required data ');
+    }
+
   }
 
   addBranch(): void {

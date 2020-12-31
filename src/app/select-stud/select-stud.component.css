@@ -17,7 +17,13 @@ body {
    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
    text-transform:uppercase;
 }
-
+#search{  
+  margin-top: 100px;
+  height: 39.5px;
+  width: 517px;
+  margin-left: 300px;
+  font-size: 20px;
+}
 
 /*** Table Styles **/
 

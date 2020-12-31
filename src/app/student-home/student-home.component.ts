@@ -11,6 +11,7 @@ export class StudentHomeComponent implements OnInit {
   url = 'https://localhost:44369/api/';
   studentData: any;
   issuedData: any;
+  searchString?:string;
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {

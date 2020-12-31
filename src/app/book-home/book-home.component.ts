@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class BookHomeComponent implements OnInit {
   deleteFlag:any;
+  searchString?:string;
   id:any;
   url = 'https://localhost:44369/api/';
   bookData:any;

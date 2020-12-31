@@ -13,6 +13,7 @@ export class SelectStudComponent implements OnInit {
   issueBookId:any;  
   studentId:any;
   bookData:any;
+  searchString?:string;
   selectedStudData:any;  
   url = 'https://localhost:44369/api/';
   studentData:any;

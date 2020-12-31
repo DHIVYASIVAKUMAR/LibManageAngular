@@ -4,8 +4,9 @@
  <form [formGroup]="editBookForm" (ngSubmit)="onSubmit()"> 
     <p>
       <label for="bookName">Book Name</label>
-      <input type="text" id="bookName" name="bookname" formControlName="BookName" [(ngModel)]="bookName">
-      <span *ngIf="!editBookForm.get('BookName').valid && (editBookForm.get('BookName').touched || editBookForm.get('BookName').dirty)" class="help-block" >Please enter Book Name</span>
+      <input type="text" id="BookName" formControlName ="BookName" [(ngModel)]="bookName" >
+      <!-- -->
+      <span *ngIf="!editBookForm.get('BookName')?.valid" class="help-block" >Please enter Book Name</span>
     </p>     
       <label for="authorName">Author Name</label>
      
@@ -13,10 +14,10 @@
         <tr>
           <td > 
             <select required  id="authorName" name="authorName" formControlName="AuthorName" [(ngModel)]='authorName' style="width: 402px;">
-              <option value="undefined">Please select Author</option>
+              <option value="">Please select Author</option>
               <option *ngFor="let author of authorList" >{{author.serviceAuthorName}}</option>
             </select>
-            <span *ngIf="!editBookForm.get('AuthorName').valid && (editBookForm.get('AuthorName').touched || editBookForm.get('AuthorName').dirty)" class="help-block" >Please Select Author Name</span>
+            <span *ngIf="!editBookForm.get('AuthorName')?.valid && (editBookForm.get('AuthorName')?.touched || editBookForm.get('AuthorName')?.dirty)" class="help-block" >Please Select Author Name</span>
           </td>
           <td>
             <button type="button" class="btn btn-outline-primary  wrapper" (click)="addAuthor()">
@@ -31,6 +32,7 @@
     <p>
       <label for="serialNum">Serial Number </label>
       <input type="text" id="serialNum" name="serialNum"  formControlName="SerialNumber" [(ngModel)]='serialNum'>
+      <span *ngIf="!editBookForm.get('SerialNumber')?.valid && (editBookForm.get('SerialNumber')?.touched || editBookForm.get('SerialNumber')?.dirty)" class="help-block" >Please enter serial number</span>
     </p>
 
       <label for="branch">Branch </label>
@@ -38,10 +40,10 @@
         <tr>
           <td >
              <select required  id="branch" name="branch" formControlName="Branch" [(ngModel)]='branch' style="width: 402px;"> 
-              <option value="undefined">Please select Branch</option>
+              <option value="">Please select Branch</option>
               <option *ngFor="let branches of branchList" [value]="branches.serviceBranch">{{branches.serviceBranch}}</option>
             </select>
-            <span *ngIf="!editBookForm.get('Branch').valid && (editBookForm.get('Branch').touched || editBookForm.get('Branch').dirty)" class="help-block" >Please Select Branch</span>
+            <span *ngIf="!editBookForm.get('Branch')?.valid && (editBookForm.get('Branch')?.touched || editBookForm.get('Branch')?.dirty)" class="help-block" >Please Select Branch</span>
           </td>
           <td>
             <button type="button" class="btn btn-outline-primary  wrapper" (click)="addBranch()">
@@ -59,11 +61,11 @@
           <tr>
             <td >
               <select required id="publication" name ="publicaion"  formControlName="Publications" style="width: 402px;" [(ngModel)]='publications'>
-                <option value='undefined'>Please select Publications</option>
+                <option value=''>Please select Publications</option>
                 <option *ngFor = 'let publication of publicationList'[value] ='publication.servicePublications'>{{publication.servicePublications}}</option>
               </select>   
-              <span *ngIf="!editBookForm.get('Publications').valid && (editBookForm.get('Publications').touched || editBookForm.get('Publications').dirty)" class="help-block" >Please Select Publications</span>
-            </td>
+             <span *ngIf="!editBookForm.get('Publications')?.valid && (editBookForm.get('Publications')?.touched || editBookForm.get('Publications')?.dirty)" class="help-block" >Please Select Publications</span>
+          </td> 
             <td>
               <button type="button" class="btn btn-outline-primary  wrapper" (click)="addPublication()">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

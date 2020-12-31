@@ -16,7 +16,10 @@
     background: #f4f7f8;
     border-radius: 8px;
   }
-  
+  .help-block{
+    color: red;
+    background-color: rgb(255, 202, 202);
+  }
   h1 {
     margin: 0 0 30px 0;
     text-align: center;
@@ -46,8 +49,7 @@
     width: 100%;
     background-color: #ffffff;
     color: #8a97a0;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    margin-bottom: 30px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;    
   }
   
   input[type="radio"],
@@ -90,6 +92,7 @@
     display: block;
     margin-bottom: 8px;
     font-size: 120%;
+    margin-top: 10px;
   }
   
   label.light {
@@ -117,7 +120,6 @@
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-bottom: 30px;
     color:#FFF
   }
 #authorName, #branch, #publication{  

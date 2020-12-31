@@ -4,6 +4,8 @@
     <p>
       <label for="bookName">Book Name</label>
       <input type="text" id="bookName" name="bookname" formControlName="BookName" [(ngModel)]='bookName'>
+      <span *ngIf="!newBookForm.get('BookName')?.valid && (newBookForm.get('BookName')?.touched || newBookForm.get('BookName')?.dirty)" class="help-block" >Please Select Author Name</span>
+
     </p>
    
     
@@ -16,6 +18,8 @@
               <option value="undefined">Please select Author</option>
               <option *ngFor="let author of authorList" [ngValue]="author.serviceAuthorName">{{author.serviceAuthorName}}</option>
             </select>
+            <span *ngIf="!newBookForm.get('AuthorName')?.valid && (newBookForm.get('AuthorName')?.touched || newBookForm.get('AuthorName')?.dirty)" class="help-block" >Please Select Author Name</span>
+
           </td>
           <td>
             <button type="button" class="btn btn-outline-primary  wrapper" (click)="addAuthor()">
@@ -30,6 +34,8 @@
     <p>
       <label for="serialNum">Serial Number </label>
       <input type="text" id="serialNum" name="serialNum" formControlName="SerialNumber" [(ngModel)]='serialNum'>
+      <span *ngIf="!newBookForm.get('SerialNumber')?.valid && (newBookForm.get('SerialNumber')?.touched || newBookForm.get('SerialNumber')?.dirty)" class="help-block" >Please Select Author Name</span>
+
     </p>
 
       <label for="branch">Branch </label>
@@ -40,6 +46,8 @@
               <option value="undefined">Please select Branch</option>
               <option *ngFor="let branch of branchList" [ngValue]="branch.serviceBranch">{{branch.serviceBranch}}</option>
             </select>
+            <span *ngIf="!newBookForm.get('Branch')?.valid && (newBookForm.get('Branch')?.touched || newBookForm.get('Branch')?.dirty)" class="help-block" >Please Select Author Name</span>
+
           </td>
           <td>
             <button type="button" class="btn btn-outline-primary  wrapper" (click)="addBranch()">
@@ -60,6 +68,8 @@
                 <option value='undefined'>Please select Publications</option>
                 <option *ngFor = 'let publication of publicationList'[ngValue] ='publication.servicePublications'>{{publication.servicePublications}}</option>
               </select>   
+              <span *ngIf="!newBookForm.get('Publications')?.valid && (newBookForm.get('Publications')?.touched || newBookForm.get('Publications')?.dirty)" class="help-block" >Please Select Author Name</span>
+
             </td>
             <td>
               <button type="button" class="btn btn-outline-primary  wrapper" (click)="addPublication()">

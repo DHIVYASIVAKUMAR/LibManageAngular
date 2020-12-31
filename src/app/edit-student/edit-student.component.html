@@ -4,6 +4,8 @@
     <p>
       <label for="name">Name</label>
       <input type="text" id="name" name="name" formControlName="serviceStudentName"   [(ngModel)]='name'>
+      <span *ngIf="!editStudentForm.get('serviceStudentName')?.valid && (editStudentForm.get('serviceStudentName')?.touched || editStudentForm.get('serviceStudentName')?.dirty)" class="help-block" >Please Select Author Name</span>
+
     </p>
    
     
@@ -15,6 +17,8 @@
                <option value="undefined">Please select Branch</option>
                <option *ngFor='let branch of BranchList'[value]="branch.serviceStudentBranch">{{branch.serviceStudentBranch}}</option>
              </select>
+             <span *ngIf="!editStudentForm.get('serviceStudentBranch')?.valid && (editStudentForm.get('serviceStudentBranch')?.touched || editStudentForm.get('serviceStudentBranch')?.dirty)" class="help-block" >Please Select Author Name</span>
+
         </td>
         <td>
           <button type="button" class="btn btn-outline-primary  wrapper" (click)='addBranch()'>
@@ -34,29 +38,41 @@
         <option value=1>Male</option>
         <option value=2>Gender Less</option>
       </select>
+      <span *ngIf="!editStudentForm.get('serviceGender')?.valid && (editStudentForm.get('serviceGender')?.touched || editStudentForm.get('serviceGender')?.dirty)" class="help-block" >Please Select Author Name</span>
+
     </p>
 
     <p>
       <label for="phoneNum">Phone Number</label>
       <input type="text" id="phoneNum" name="phoneNum" formControlName="servicePhoneNumber" [(ngModel)]='phoneNum'>   
+      <span *ngIf="!editStudentForm.get('servicePhoneNumber')?.valid && (editStudentForm.get('servicePhoneNumber')?.touched || editStudentForm.get('servicePhoneNumber')?.dirty)" class="help-block" >Please Select Author Name</span>
+
     </p>
    
     <p>
       <label for="address">Address </label>
       <input type="text" id="address" name="address" formControlName="serviceAddress" [(ngModel)]='address'>     
+      <span *ngIf="!editStudentForm.get('serviceAddress')?.valid && (editStudentForm.get('serviceAddress')?.touched || editStudentForm.get('serviceAddress')?.dirty)" class="help-block" >Please Select Author Name</span>
+
     </p>
 
     <p>
       <label for="city">City</label>
       <input type="text" id="city" name="city" formControlName="serviceCity" [(ngModel)]='city'>
+      <span *ngIf="!editStudentForm.get('serviceCity')?.valid && (editStudentForm.get('serviceCity')?.touched || editStudentForm.get('serviceCity')?.dirty)" class="help-block" >Please Select Author Name</span>
+
     </p>
     <p>
       <label for="email">Email</label>
       <input type="email" id="email" name="email" formControlName="serviceEmail" [(ngModel)]='email'>
+      <span *ngIf="!editStudentForm.get('serviceEmail')?.valid && (editStudentForm.get('serviceEmail')?.touched || editStudentForm.get('serviceEmail')?.dirty)" class="help-block" >Please Select Author Name</span>
+
     </p>
     <p>
        <label for="password">Password</label>
        <input type="text" id="password" name="password" formControlName="servicePassword" [(ngModel)]='password'>
+       <span *ngIf="!editStudentForm.get('servicePassword')?.valid && (editStudentForm.get('servicePassword')?.touched || editStudentForm.get('servicePassword')?.dirty)" class="help-block" >Please Select Author Name</span>
+
     </p>   
     <p>
       <button type="submit" style="width: 140px; margin-left: 100px;">Save</button>

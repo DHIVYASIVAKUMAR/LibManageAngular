@@ -54,9 +54,9 @@ this.editBookForm = new FormGroup({
    
   } 
 
-  onSubmit() {
-   
-    if(this.bookName != "" || this.serialNum != "" || this.authorName !=  "" || this.branch != "undefined" || this.publications != "undefined")
+  onSubmit() { 
+  
+    if(this.editBookForm.status != 'INVALID')
     {
     this.subUrl = this.url + 'ServiceBooks/PutServiceBooks/'+this.editBookid;
     this.http.put(this.subUrl, {
@@ -77,7 +77,6 @@ this.editBookForm = new FormGroup({
     else
     {
       alert('Please fill required data ');
-      window.location.reload();
     }
     
     }

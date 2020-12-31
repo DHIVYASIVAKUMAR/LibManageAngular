@@ -56,7 +56,13 @@ th:last-child {
   border-top-right-radius:3px;
   border-right:none;
 }
-  
+#search{  
+  margin-top: 100px;
+  height: 39.5px;
+  width: 517px;
+  margin-left: 300px;
+  font-size: 20px;
+}
 tr {
   border-top: 1px solid #C1C3D1;
   /*border-bottom-: 1px solid #C1C3D1;*/
