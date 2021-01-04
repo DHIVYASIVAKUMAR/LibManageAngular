@@ -62,5 +62,10 @@ export class StudentHomeComponent implements OnInit {
   studentDetails(id: any) {
     this.router.navigate(['/studentDetail', id]);
   }
-
+  key:any;
+  reverse: boolean = false;
+  sort(key:any){
+  this.key = key;
+  this.reverse = !this.reverse;
+  }
 }

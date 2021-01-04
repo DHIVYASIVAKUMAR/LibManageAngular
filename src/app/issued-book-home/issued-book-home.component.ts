@@ -35,6 +35,11 @@ returnBook(id:any):void{
     window.location.reload();
   }    
 }
-  
+key:any;
+reverse: boolean = false;
+sort(key:any){
+this.key = key;
+this.reverse = !this.reverse;
+}
 }
 

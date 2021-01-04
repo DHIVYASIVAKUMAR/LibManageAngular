@@ -5,19 +5,18 @@
       </div>
 <table class="table-fill"style="margin-top: 30px;">
     <thead>
-        <tr>
-            <th class="text-left" style="padding-right: 90px;">Book</th>
-            <th class="text-left">Author </th>
-            <th class="text-left">Serial.no</th>
-            <th class="text-left">Branch</th>
-            <th class="text-left">Publication</th>
+        <tr>           
+            <th class="text-left " (click)="sort('serviceBookName')">Book</th>
+            <th class="text-left " (click)="sort('serviceAuthorName')">Author</th>  
+            <th class="text-left " (click)="sort('serviceSerialNumber')">Serial.no</th>
+            <th class="text-left " (click)="sort('serviceBranch')">Branch</th>
+            <th class="text-left " (click)="sort('servicePublications')">Publication </th>            
             <th class="text-left">Status</th>
-            <th class="text-left"></th>
-           
+            <th class="text-left"></th>           
         </tr>
     </thead>
     <tbody class="table-hover">
-        <tr *ngFor='let book of bookData | filter:searchString'>
+        <tr *ngFor='let book of bookData | filter:searchString | orderBy : key: reverse'>
             <td>{{book.serviceBookName}}</td>
             <td>{{book.serviceAuthorName}}</td>
             <td>{{book.serviceSerialNumber}}</td>

@@ -37,4 +37,10 @@ this.router.navigate(['/editBook',serviceBookId]);
 select(id:any):void{
   this.router.navigate(['/selectStudent',id]);
 }
+key:any;
+reverse: boolean = false;
+sort(key:any){
+this.key = key;
+this.reverse = !this.reverse;
+}
 }

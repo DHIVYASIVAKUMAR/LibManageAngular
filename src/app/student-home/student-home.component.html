@@ -5,17 +5,17 @@
 <table class="table-fill"style="margin-top: 30px;">
     <thead>
         <tr>
-            <th class="text-left" style="padding-right: 90px;">Name</th>
-            <th class="text-left">Branch</th>
-            <th class="text-left">Gender</th>
-            <th class="text-left">Phone.no</th>
-            <th class="text-left">Address</th>
-            <th class="text-left">city</th>
+            <th class="text-left " style="padding-right: 90px;" (click)="sort('serviceStudentName')">Name </th>
+            <th class="text-left "  (click)="sort('serviceStudentBranch')">Branch </th>
+            <th class="text-left "  (click)="sort('serviceGender')">Gender </th>
+            <th class="text-left "  (click)="sort('servicePhoneNumber')">Phone.no </th>
+            <th class="text-left "  (click)="sort('serviceAddress')">Address </th>
+            <th class="text-left "  (click)="sort('serviceCity')">city </th>
             <th class="text-left"></th>           
         </tr>
     </thead>
     <tbody class="table-hover">
-        <tr *ngFor="let student of studentData  | filter:searchString">
+        <tr *ngFor="let student of studentData  | filter:searchString | orderBy : key: reverse">
             <td>{{student.serviceStudentName}}</td>
             <td>{{student.serviceStudentBranch}}</td>
             <td>

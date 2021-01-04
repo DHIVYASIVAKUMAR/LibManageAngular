@@ -4,19 +4,19 @@
 <table class="table-fill" style="margin-top: 30px;">
     <thead>
         <tr>
-            <th class="text-left" style="padding-right: 90px;">Book</th>
-            <th class="text-left">Student</th>
-            <th class="text-left">Author </th>
-            <th class="text-left">Branch</th>
-            <th class="text-left">Publication</th>
-            <th class="text-left">Email</th>
-            <th class="text-left">From </th>
-            <th class="text-left">To </th>
+            <th class="text-left " style="padding-right: 90px;" (click)="sort('serviceBookName')">Book</th>
+            <th class="text-left " (click)="sort('serviceStudentName')">Student</th>
+            <th class="text-left " (click)="sort('serviceAuthorName')">Author</th>  
+            <th class="text-left " (click)="sort('serviceBranch')">Branch</th>  
+            <th class="text-left " (click)="sort('servicePublication')">Publication</th>  
+            <th class="text-left " (click)="sort('serviceStudentEmail')">Email</th>  
+            <th class="text-left " (click)="sort('serviceDisplayFromDate')">From</th>  
+            <th class="text-left " (click)="sort('serviceDisplayToDate')">To </th> 
             <th class="text-left"></th>
         </tr>
     </thead>
     <tbody class="table-hover">
-        <tr *ngFor="let issuedBook of issuedBookData  | filter:searchString">
+        <tr *ngFor="let issuedBook of issuedBookData  | filter:searchString  | orderBy : key: reverse">
             <td>{{issuedBook.serviceBookName}}</td>
             <td>{{issuedBook.serviceStudentName}}</td>
             <td>{{issuedBook.serviceAuthorName}}</td>
