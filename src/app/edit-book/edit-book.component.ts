@@ -83,19 +83,28 @@ this.editBookForm = new FormGroup({
   addAuthor(): void {
     this.newAuthor = prompt("New Author");
     this.subUrl = this.url + 'ServiceAuthors/PostServiceAuthor';
-    this.http.post(this.subUrl, { serviceAuthorName: this.newAuthor }).toPromise().then((data: any) => { alert(data.serviceAuthorName + ' added successfully') });
+    this.http.post(this.subUrl, { serviceAuthorName: this.newAuthor })
+    .toPromise().then((data: any) => {
+      //  alert(data.serviceAuthorName + ' added successfully') 
+      });
     window.location.reload();
   }
   addBranch(): void {
     this.subUrl = this.url + 'ServiceBooks/PostServiceBranches';
     this.newBranch = prompt("New Branch");
-    this.http.post(this.subUrl, { serviceBranch: this.newBranch }).toPromise().then((data: any) => { alert(data.serviceBranch + ' added successfully') });
+    this.http.post(this.subUrl, { serviceBranch: this.newBranch })
+    .toPromise().then((data: any) => { 
+      // alert(data.serviceBranch + ' added successfully')
+     });
     window.location.reload();
   }
   addPublication(): void {
     this.subUrl = this.url + 'ServiceBooks/PostServicePublications';
     this.newPublication = prompt("New Publication");
-    this.http.post(this.subUrl, { servicePublications: this.newPublication }).toPromise().then((data: any) => { alert(data.servicePublications + ' added successfully') });
+    this.http.post(this.subUrl, { servicePublications: this.newPublication })
+    .toPromise().then((data: any) => { 
+      // alert(data.servicePublications + ' added successfully') 
+    });
     window.location.reload();
   }
 }

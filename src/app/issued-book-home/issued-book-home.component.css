@@ -20,7 +20,9 @@ body {
 
 
 /*** Table Styles **/
-
+td.noData{
+  text-align:center !important;
+}
 .table-fill {
   background: white;
   border-radius:3px;

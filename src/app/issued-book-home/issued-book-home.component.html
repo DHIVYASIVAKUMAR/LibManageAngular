@@ -16,7 +16,10 @@
         </tr>
     </thead>
     <tbody class="table-hover">
-        <tr *ngFor="let issuedBook of issuedBookData  | filter:searchString  | orderBy : key: reverse">
+        <tr  *ngIf="issuedBookData?.length == 0">    
+                 <td colspan="9" class="noData">No Data found</td>         
+        </tr>
+        <tr *ngFor="let issuedBook of issuedBookData  | filter:searchString  | orderBy : key: reverse">                 
             <td>{{issuedBook.serviceBookName}}</td>
             <td>{{issuedBook.serviceStudentName}}</td>
             <td>{{issuedBook.serviceAuthorName}}</td>

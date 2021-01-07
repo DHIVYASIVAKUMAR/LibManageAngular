@@ -82,7 +82,11 @@ export class EditStudentComponent implements OnInit {
   addBranch(): void {
     this.subUrl = this.url + 'ServiceStudentBranches/PostServiceStudentBranch';
     this.newBranch = prompt('Enter Branch Name ');
-    this.http.post(this.subUrl, { serviceStudentBranch: this.newBranch }).toPromise().then((data: any) => { console.log(data); alert('Added successfully'); });
+    this.http.post(this.subUrl, { serviceStudentBranch: this.newBranch })
+    .toPromise().then((data: any) => {
+       console.log(data); 
+      //  alert('Added successfully');
+       });
     window.location.reload();
   }
 }

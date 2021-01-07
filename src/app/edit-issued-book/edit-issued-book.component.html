@@ -1,45 +1,49 @@
 <h1>Edit Issued Book</h1>
 
-<form [formGroup]="editIssuedBookForm" (ngSubmit)="onSubmit()"> 
-    <p>
-      <label for="bookName">Book Name</label>
-      <input type="text" id="bookName" name="bookname" formControlName="serviceBookName" [(ngModel)]="bookName" disabled>
-    </p>
-   
-    <p>
-      <label for="authorName">Author Name </label>
-      <input type="text" id="authorName" name="authorName" formControlName="serviceAuthorName" [(ngModel)]="authorName" disabled>
-    </p>
-   
-    <p>
-      <label for="branch">Branch </label>
-      <input type="text" id="branch" name="branch" formControlName="serviceBranch" [(ngModel)]="branch" disabled>
-    </p>
+<form [formGroup]="editIssuedBookForm" (ngSubmit)="onSubmit()">
+  <p>
+    <label for="bookName">Book Name</label>
+    <input type="text" id="bookName" name="bookname" formControlName="serviceBookName" [(ngModel)]="bookName" disabled>
+  </p>
 
-    <p>
-      <label for="student">Student </label>
-      <input type="text" id="student" name="student" formControlName="serviceStudent" [(ngModel)]="student" disabled>   
-    </p>
-   
-    <p>
-        <label for="email">Email </label>
-        <input type="text" id="email" name="email" formControlName="serviceEmail" [(ngModel)]="email"  disabled>     
-    </p>
+  <p>
+    <label for="authorName">Author Name </label>
+    <input type="text" id="authorName" name="authorName" formControlName="serviceAuthorName" [(ngModel)]="authorName"
+      disabled>
+  </p>
 
-    <p>
-      <label for="fromDate">From Date</label>
-      <input type="Date" id="fromDate" name="fromDate" formControlName="fromDate" [(ngModel)]="fromDate"> 
+  <p>
+    <label for="branch">Branch </label>
+    <input type="text" id="branch" name="branch" formControlName="serviceBranch" [(ngModel)]="branch" disabled>
+  </p>
 
-    </p>
-    <p>
-      <label for="toDate">To Date </label>
-      <input type="Date" id="toDate" name="toDate" formControlName="toDate" [(ngModel)]="toDate">     
+  <p>
+    <label for="student">Student </label>
+    <input type="text" id="student" name="student" formControlName="serviceStudent" [(ngModel)]="student" disabled>
+  </p>
 
-    </p>
-   
-    <p>
-      <button type="submit" style="width: 140px; margin-left: 100px;">Save</button>
-      <button type="button" style="width: 140px; margin-left: 15px;"routerLink="/issuedBookHome">Back</button>
-    </p>
-   
-  </form>
+  <p>
+    <label for="email">Email </label>
+    <input type="text" id="email" name="email" formControlName="serviceEmail" [(ngModel)]="email" disabled>
+  </p>
+
+  <p>
+    <label for="fromDate">From Date</label>
+    <input type="Date" id="fromDate" name="fromDate" formControlName="fromDate" [(ngModel)]="fromDate">
+
+  </p>
+  <p>
+    <label for="toDate">To Date </label>
+    <input type="Date" id="toDate" name="toDate" formControlName="toDate" [(ngModel)]="toDate"  (change)="compareTwoDates()">
+  </p>
+  <div *ngIf="error.isError" class="alert alert-danger">
+    {{ error.errorMessage }}
+  </div>
+
+
+  <p>
+    <button type="submit" style="width: 140px; margin-left: 100px;">Save</button>
+    <button type="button" style="width: 140px; margin-left: 15px;" routerLink="/issuedBookHome">Back</button>
+  </p>
+
+</form>

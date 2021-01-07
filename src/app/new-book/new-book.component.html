@@ -50,7 +50,8 @@
 
           </td>
           <td>
-            <button type="button" class="btn btn-outline-primary  wrapper" (click)="addBranch()">
+            <button type="button" class="btn btn-outline-primary  wrapper"(click)="addBranch()" >
+              <!--(click)="openDialog()"  -->
               <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"></path>
                 <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"></path>
@@ -72,7 +73,8 @@
 
             </td>
             <td>
-              <button type="button" class="btn btn-outline-primary  wrapper" (click)="addPublication()">
+              <button type="button" class="btn btn-outline-primary mat-raised-button wrapper" (click)="addPublication()">
+                <!--  (click)="addBookPublication()"-->
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"></path>
                   <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"></path>
@@ -93,48 +95,3 @@
     </p>
    
   </form>
-
- 
-
-<!-- <form [formGroup]="newBookForm" (ngSubmit)="onSubmit()">
- 
-    <p>
-      <label for="firstname">Book Name</label>
-      <input type="text" id="firstname" name="firstname" formControlName="firstname">
-    </p>
-   
-    <p>
-      <label for="lastname">Author Name </label>
-      <input type="text" id="lastname" name="lastname" formControlName="lastname">
-    </p>
-   
-    <p>
-      <label for="email">Serial Number </label>
-      <input type="text" id="email" name="email" formControlName="email">
-    </p>
-   
-    <p>
-      <label for="gender">Branch </label>
-      <input type="radio" value="male" id="gender" name="gender" formControlName="gender"> Male
-      <input type="radio" value="female" id="gender" name="gender" formControlName="gender"> Female
-    </p>
-   
-    <p>
-      <label for="isMarried">Publication</label>
-      <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried">
-    </p>
-   
-    <p>
-      <label for="country">Is Available </label>
-      <select id="country" name="country"  formControlName="country">
-        <option [ngValue]="c.id" *ngFor="let c of countryList">
-          {{c.name}}
-        </option>
-      </select>
-    </p>
-   
-    <p>
-      <button type="submit">Submit</button>
-    </p>
-   
-  </form> -->

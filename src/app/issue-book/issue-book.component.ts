@@ -41,7 +41,8 @@ export class IssueBookComponent implements OnInit {
     }  
   
     onSubmit() {  
-      this.http.post('https://localhost:44369/api/ServiceIssuedBooks/PostServiceIssuedBooks',{
+      if(this.error.isError != true){
+        this.http.post('https://localhost:44369/api/ServiceIssuedBooks/PostServiceIssuedBooks',{
         bookId : this.bookId,
         studentId:this.studentId,
         serviceFromDate:this.fromDate,
@@ -51,7 +52,20 @@ export class IssueBookComponent implements OnInit {
         alert('Book Issued Successfully');
        this.router.navigate(['issuedBookHome/']);
       })
+      }
+      else{
+        alert("please enter correct value");
+      }
     }
 
+    error:any={isError:false, errorMessage:""};
+    compareTwoDates(){
+      if(new Date(this.toDate)< new Date(this.fromDate)){
+       this.error = {isError:true, errorMessage:"To Date cannot before From date"};
+      }
+      else{
+        this.error = {isError:false, errorMessage:""};
+      }
+    }
   }
   

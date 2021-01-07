@@ -49,10 +49,11 @@
 			<label>To Date </label>
 		</dt>
 		<dd >
-			<input type='date' id="toDate" [(ngModel)]="toDate"> 
-			
-
-        </dd>		
+			<input type='date' id="toDate" [(ngModel)]="toDate" (change)="compareTwoDates()"> 
+			<div *ngIf="error.isError" class="alert alert-danger">
+			{{ error.errorMessage }}
+		  </div>
+			</dd>
         <dd>
 			<button (click)="onSubmit()" style="width: 140px; margin-left: 100px;">Issue Book</button>			
       <button type="button" style="width: 140px; margin-left: 15px;"routerLink="/bookHome">Back</button>

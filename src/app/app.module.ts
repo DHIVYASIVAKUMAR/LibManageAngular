@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { BookIssueServiceService } from './book-issue-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,12 +11,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {Ng2OrderModule} from 'ng2-order-pipe';
-import {NgxPaginationModule} from 'ngx-pagination'
+import {NgxPaginationModule} from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogBookPublicationComponent } from './dialog-book-publication/dialog-book-publication.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,  
-    NavBarComponent
+    NavBarComponent, DialogBookPublicationComponent
   ],
   imports: [
     BrowserModule,
@@ -26,8 +30,10 @@ import {NgxPaginationModule} from 'ngx-pagination'
     FormsModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule
   ],
+  entryComponents :[DialogBookPublicationComponent],
   providers: [BookIssueServiceService],
   bootstrap: [AppComponent]
 })

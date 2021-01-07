@@ -1,9 +1,15 @@
+import { MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { DialogBookPublicationComponent } from '../dialog-book-publication/dialog-book-publication.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
+export interface DialogData {
+  branch : string;
+}
 @Component({
   selector: 'app-new-book',
   templateUrl: './new-book.component.html',
@@ -26,13 +32,13 @@ export class NewBookComponent implements OnInit {
   authorList: any;
   branchList: any;
   publicationList: any;
-
-  constructor(private http: HttpClient,private router :Router) {
+//,public dialog:MatDialogModule
+  constructor(private http: HttpClient,private router :Router ) {
     this.http.get(this.url + 'ServiceAuthors/GetAuthor').toPromise().then((data: any) => { this.authorList = data; });
     this.http.get(this.url + 'ServiceBooks/GetBranch').toPromise().then((data: any) => { this.branchList = data; });
     this.http.get(this.url + 'ServiceBooks/GetPublication').toPromise().then((data: any) => { this.publicationList = data; });
   }
-
+  
   ngOnInit(): void {
     this.newBookForm = new FormGroup({
       BookName: new FormControl(null, [Validators.required]),
@@ -73,20 +79,31 @@ export class NewBookComponent implements OnInit {
   addAuthor(): void {
     this.newAuthor = prompt("New Author");
     this.subUrl = this.url + 'ServiceAuthors/PostServiceAuthor';
-    this.http.post(this.subUrl, { serviceAuthorName: this.newAuthor }).toPromise().then((data: any) => { alert(data.serviceAuthorName + ' added successfully') });
+    this.http.post(this.subUrl, { serviceAuthorName: this.newAuthor })
+    .toPromise().then((data: any) => { 
+      // alert(data.serviceAuthorName + ' added successfully') 
+    });
     window.location.reload();
   }
   addBranch(): void {
     this.subUrl = this.url + 'ServiceBooks/PostServiceBranches';
     this.newBranch = prompt("New Branch");
-    this.http.post(this.subUrl, { serviceBranch: this.newBranch }).toPromise().then((data: any) => { alert(data.serviceBranch + ' added successfully') });
+    this.http.post(this.subUrl, { serviceBranch: this.newBranch })
+    .toPromise().then((data: any) => {
+      //  alert(data.serviceBranch + ' added successfully')
+       });
     window.location.reload();
   }
   addPublication(): void {
     this.subUrl = this.url + 'ServiceBooks/PostServicePublications';
     this.newPublication = prompt("New Publication");
-    this.http.post(this.subUrl, { servicePublications: this.newPublication }).toPromise().then((data: any) => { alert(data.servicePublications + ' added successfully') });
+    this.http.post(this.subUrl, { servicePublications: this.newPublication })
+    .toPromise().then((data: any) => { 
+      // alert(data.servicePublications + ' added successfully') 
+    });
     window.location.reload();
   }
-
+  // addBookPublication(){
+    
+  // }
 }

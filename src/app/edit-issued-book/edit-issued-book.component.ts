@@ -29,8 +29,8 @@ export class EditIssuedBookComponent implements OnInit {
       this.branch = data.serviceBranch;
       this.student = data.serviceStudentName;
       this.email = data.serviceStudentEmail;
-      this.fromDate = data.fromDate;
-      this.toDate = data.toDate;
+      this.fromDate = data.serviceFromDate;
+      this.toDate = data.serviceToDate;
       console.log(data);
     });
   }
@@ -45,7 +45,7 @@ export class EditIssuedBookComponent implements OnInit {
   });
 
   onSubmit() {
-    if (this.editIssuedBookForm.status != 'INVALID') {
+    if (this.editIssuedBookForm.status != 'INVALID' && this.error.isError != true) {
       this.http.put('https://localhost:44369/api/ServiceIssuedBooks/PutServiceIssuedBooks?id=' + this.id + '&fromDate=' + this.fromDate + '&toDate=' + this.toDate, {
       }).toPromise().then((data: any) => {
         console.log(data);
@@ -57,6 +57,15 @@ export class EditIssuedBookComponent implements OnInit {
     else {
       alert('Please fill required data ');
     }
-
   }
+  error:any={isError:false,errorMessage:''};
+
+compareTwoDates(){
+   if(new Date(this.editIssuedBookForm.controls['toDate'].value)<new Date(this.editIssuedBookForm.controls['fromDate'].value)){
+      this.error={isError:true,errorMessage:'To Date cannot before From date'};
+   }
+   else{
+     this.error = {isError:false,errorMessage:''};
+   }
+}
 }
